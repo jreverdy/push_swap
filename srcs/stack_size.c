@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   stack_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jereverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 18:50:56 by jereverd          #+#    #+#             */
-/*   Updated: 2022/03/02 18:50:59 by jereverd         ###   ########lyon.fr   */
+/*   Created: 2022/03/09 14:06:44 by jereverd          #+#    #+#             */
+/*   Updated: 2022/03/09 14:06:45 by jereverd         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
 
-void	ft_bubble_sort(int *tab, int size)
+int	stack_size(t_stack *list)
 {
-	int tmp;
-	int i;
+	size_t	i;
 
 	i = 0;
-	while (i < size - 1)
+	while (lst)
 	{
-		if (tab[i] > tab[i + 1])
-		{
-			tmp = tab[i];
-			tab[i] = tab[i + 1];
-			tab[i + 1] = tmp;
-		}
-		else
-			i++;
+		i++;
+		lst = lst->next;
 	}
-}
-
-int	is_sorted(t_stack *a)
-{
-
+	return (i);
 }

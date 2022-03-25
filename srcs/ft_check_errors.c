@@ -52,11 +52,11 @@ int	check_duplicate_numbers(int ac, char **av)
 	return (0);
 }
 
-int check_int(char *av) // fonction a fix
+int check_int(char *av)
 {
 	long	nb;
 
-	nb = ft_atoi(av);
+	nb = ft_atol(av);
 	if (nb < INT_MIN || nb > INT_MAX)
 		return (-1);
 	return (0);
@@ -98,9 +98,9 @@ int check_minus_zero(int ac, char **av)
 	zero_minus = 0;
 	while (i < ac)
 	{
-		if (av[i][0] != '-' && ft_atoi(av[i]) == 0)
+		if (av[i][0] != '-' && ft_atol(av[i]) == 0)
 			zero++;
-		else if (av[i][0] == '-' && ft_atoi(av[i]) == 0)
+		else if (av[i][0] == '-' && ft_atol(av[i]) == 0)
 			zero_minus++;
 		i++;
 	}

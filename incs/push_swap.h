@@ -19,21 +19,22 @@
 # include "../libft/libft.h"
 # include "../ft_printf/incs/ft_printf.h"
 
-typedef struct	s_list
+typedef struct	s_dlist
 {
-	int		val;
-	struct s_list	*prec;
-	struct s_list	*next;
-}t_list;
+	int				val;
+	struct s_dlist	*prev;
+	struct s_dlist	*next;
+}t_dlist;
 
 typedef struct	s_stack
 {
-	int size;
-	int	*tab;
+	struct s_dlist	*first;
+	int 			size;
 }t_stack;
 
 
 int		main(int ac , char **av);
 int		check_errors(int ac, char **av);
+int		stack_size(t_stack *list);
 
 #endif
