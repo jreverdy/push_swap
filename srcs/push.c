@@ -12,26 +12,28 @@
 
 #include "../incs/push_swap.h"
 
-void	push_a(t_stack **a, t_stack **b)
+void	push(t_stack *a, t_stack *b, char *to_write)
 {
-	t_stack	*tmp;
+	t_dlist	*to_push;
 
-	tmp = NULL;
-	tmp = *b;
-	*b = tmp->next;
-	tmp->next = *a;
-	*a = tmp;
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp;
-
-	tmp = null;
-	tmp = *a;
-	*a = tmp->next;
-	tmp->next =  *b;
-	*b = tmp;
-	ft_printf("pb\n");
+	if (a->size == 0)
+		return ;
+	to_push = a->first;
+	a->first = a->first->next;
+	a->first->prev = to_push->prev;
+	if(!b->first)
+	{
+		to_push->next = to_push;
+		to_push->prev = to_push;
+	}
+	else
+	{
+		to_push->next = b->first;
+		to_push->prev = b->first->prev;
+		b->first->prev = to_push;
+	}
+	b->first = to_push;
+	b->size++;
+	a->size--;
+	ft_printf("%s\n", to_write);
 }

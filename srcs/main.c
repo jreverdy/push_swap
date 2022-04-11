@@ -12,40 +12,6 @@
 
 #include "../incs/push_swap.h"
 
-//void	init_stack(t_stack *a, t_stack *b, int ac, char **av)
-//{
-//	int i;
-//	int j;
-//
-//	i = 0;
-//	j = 1;
-//	a->size = ac - 1;
-//	b->size = 0;
-//	a->tab = ft_calloc(a->size, sizeof(int));
-//	b->tab = ft_calloc(b->size, sizeof(int));
-//	while (j < ac)
-//	{
-//		a->tab[i] = ft_atoi(av[j]);
-//		i++;
-//		j++;
-//	}
-//}
-
-//t_dlist	*init_root(void)
-//{
-//	t_dlist	*racine;
-//
-//	racine = malloc(sizeof (*racine));
-//	if (!racine)
-//		return (NULL);
-//	if (racine)
-//	{
-//		racine->prec = racine;
-//		racine->next = racine;
-//	}
-//	return(racine);
-//}
-
 int	init_first(char **av, t_stack *a)
 {
 	t_dlist *new;
@@ -54,12 +20,18 @@ int	init_first(char **av, t_stack *a)
 	new = malloc(sizeof(t_dlist));
 	if (!new)
 		return (-1);
-	a->size = 1;
 	a->first = new;
 	new->val = ft_atol(av[1]);
-	new->prev = NULL;
-	new->next = NULL;
+	new->prev = new;
+	new->next = new;
+	a->size++;
 	return (0);
+}
+
+void	init_stack(t_stack *a, t_stack *b)
+{
+	a->size = 0;
+	b->size = 0;
 }
 
 int	insert_elem(char *av, t_stack *a)
@@ -73,25 +45,46 @@ int	insert_elem(char *av, t_stack *a)
 	elem->next = a->first;
 	elem->prev = a->first->prev;
 	a->first->prev = elem;
-	a->first->prev->next = elem;
-	printf("4\n");
+	a->first = elem;
+	a->size++;
 	return (0);
 }
-  
+
+void	aff_stack(t_dlist *a, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		printf("%d\n", a->val);
+		a = a->next;
+		i++;
+	}
+}
+
 int main(int ac, char **av)
 {
 	t_stack	a;
-//	t_stack b;
+	t_stack b;
 	int 	i;
 
 	i = 2;
-	printf("oui\n");
 	check_errors(ac, av);
 	init_first(av, &a);
-	printf("1\n");
-	while (av[i++])
+	while (av[i])
+	{
 		insert_elem(av[i], &a);
-	printf("2\n");
-//	init_stack(&a, &b, ac, av);
+//		printf("elem to insert: %s \n", av[i]);
+		i++;
+	}
+	rotate(&a,"ra");
+//	reverse_rotate(&a,"ra");
+//	push(&a, &b, "pb");
+//	printf("stack a : \n");
+	aff_stack(a.first, a.size);
+//	printf("size : %d", a.size);
+//	printf("\nstack b : \n");
+	aff_stack(b.first, b.size);
 	return (0);
 }

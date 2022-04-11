@@ -10,4 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../incs/push_swap.h"
 
+void	rotate(t_stack *stack, char *to_write)
+{
+	stack->first = stack->first->next;
+	printf("%s\n", to_write);
+}
+
+void	reverse_rotate(t_stack *stack, char *to_write)
+{
+//	t_dlist *tmp;
+//
+//	tmp = stack->first->prev;
+	stack->first->next = stack->first;
+	printf("%s\n", to_write);
+}

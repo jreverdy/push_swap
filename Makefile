@@ -1,5 +1,5 @@
 CC		= clang
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g3
 
 INCS		= incs/push_swap.h
 INCS_PATH	= incs
@@ -9,6 +9,8 @@ VPATH		= srcs
 
 SRCS =	main.c				\
 		ft_check_errors.c	\
+		push.c				\
+		rotate.c			\
 
 LIBFT_AR = ./libft/libft.a
 
@@ -43,6 +45,6 @@ fclean : clean
 	$(RM) $(PRINT_AR)
 	$(RM) $(NAME)
 
-re : fclean clean
+re : fclean all
 
 .PHONY : all clean fclean re libft ft_printf
