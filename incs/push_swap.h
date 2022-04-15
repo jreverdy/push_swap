@@ -39,5 +39,6 @@ int		stack_size(t_stack *list);
 void	push(t_stack *a, t_stack *b, char *to_write);
 void	rotate(t_stack *stack, char *to_write);
 void	reverse_rotate(t_stack *stack, char *to_write);
+void	swap(t_stack *stack, char *to_write);
 
 #endif

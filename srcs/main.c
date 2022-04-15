@@ -24,7 +24,7 @@ int	init_first(char **av, t_stack *a)
 	new->val = ft_atol(av[1]);
 	new->prev = new;
 	new->next = new;
-	a->size++;
+	++a->size;
 	return (0);
 }
 
@@ -40,13 +40,18 @@ int	insert_elem(char *av, t_stack *a)
 
 	elem = malloc(sizeof(t_dlist));
 	if (!elem)
+	{
 		return (-1);
+	}
 	elem->val = ft_atol(av);
+//	printf("val: %d\n", elem->val);
 	elem->next = a->first;
 	elem->prev = a->first->prev;
+	if (a->first->next == a->first)
+		a->first->next = elem;
+	a->first->prev->next = elem;
 	a->first->prev = elem;
-	a->first = elem;
-	a->size++;
+	++a->size;
 	return (0);
 }
 
@@ -71,20 +76,24 @@ int main(int ac, char **av)
 
 	i = 2;
 	check_errors(ac, av);
+	init_stack(&a, &b);
 	init_first(av, &a);
-	while (av[i])
+	while (i < ac)
 	{
 		insert_elem(av[i], &a);
 //		printf("elem to insert: %s \n", av[i]);
 		i++;
 	}
-	rotate(&a,"ra");
-//	reverse_rotate(&a,"ra");
+//	a.first = a.first->next;
+//	swap(&a, "sa");
+//	rotate(&a,"ra");
+	reverse_rotate(&a,"ra");
 //	push(&a, &b, "pb");
-//	printf("stack a : \n");
+	printf("stack a : \n");
+//	printf("a first: %d | a first next: %d\n", a.first->val, a.first->next->val);
 	aff_stack(a.first, a.size);
-//	printf("size : %d", a.size);
-//	printf("\nstack b : \n");
+	printf("size : %d", a.size);
+	printf("\nstack b : \n");
 	aff_stack(b.first, b.size);
 	return (0);
 }

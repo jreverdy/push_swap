@@ -11,6 +11,7 @@ SRCS =	main.c				\
 		ft_check_errors.c	\
 		push.c				\
 		rotate.c			\
+		swap.c				\
 
 LIBFT_AR = ./libft/libft.a
 

@@ -12,48 +12,18 @@
 
 #include "../incs/push_swap.h"
 
-void	swap_a(t_stack **a)
+void	swap(t_stack *stack, char *to_write)
 {
-	t_stack	*tmp;
-	t_stack *tmp2;
+	t_dlist *tmp;
+	t_dlist	*tmp2;
 
-	tmp = NULL;
-	tmp2 = NULL;
-	if (stack_size(*a) > 1)
+	if (stack->size > 1)
 	{
-		tmp = *a;
-		tmp2 = tmp->next;
+		tmp = stack->first;
+		tmp2 = stack->first->next;
 		tmp->next = tmp->next->next;
 		tmp2->next = tmp;
-		*a = tmp2;
-		ft_printf("sa\n");
+		stack->first = tmp2;
+		printf("%s\n", to_write);
 	}
-}
-
-void	swap_b(t_stack **b)
-{
-	t_stack	*tmp;
-	t_stack *tmp2;
-
-	tmp = NULL;
-	tmp2 = NULL;
-	if (stack_size(*b) > 1)
-	{
-		tmp = *b;
-		tmp2 = tmp->next;
-		tmp->next = tmp->next->next;
-		tmp2->next = tmp;
-		*b = tmp2;
-		ft_printf("sa\n");
-	}
-}
-
-void	swap_both(t_stack **a, t_stack **b)
-{
-	if (stack_size(*a) > 1 || stack_size(*b) > 1)
-	{
-		swap_a(*a);
-		swap_b(*b);
-	}
-	ft_printf("ss\n");
 }

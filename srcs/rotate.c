@@ -23,6 +23,6 @@ void	reverse_rotate(t_stack *stack, char *to_write)
 //	t_dlist *tmp;
 //
 //	tmp = stack->first->prev;
-	stack->first->next = stack->first;
+	stack->first = stack->first->prev;
 	printf("%s\n", to_write);
 }
