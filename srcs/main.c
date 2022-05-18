@@ -72,6 +72,7 @@ int main(int ac, char **av)
 {
 	t_stack	a;
 	t_stack b;
+	t_dlist c;
 	int 	i;
 
 	i = 2;
@@ -87,13 +88,20 @@ int main(int ac, char **av)
 //	a.first = a.first->next;
 //	swap(&a, "sa");
 //	rotate(&a,"ra");
-	reverse_rotate(&a,"ra");
+//	reverse_rotate(&a,"ra");
 //	push(&a, &b, "pb");
+//	while (a.first->next)
+//	{
+//		printf("is sorted = %d\n", is_sorted(&a));
+//		a.first = c.next;
+//	}
+
 	printf("stack a : \n");
 //	printf("a first: %d | a first next: %d\n", a.first->val, a.first->next->val);
 	aff_stack(a.first, a.size);
 	printf("size : %d", a.size);
 	printf("\nstack b : \n");
+	printf("trie ? = %d\n", is_sorted(&a));
 	aff_stack(b.first, b.size);
 	return (0);
 }

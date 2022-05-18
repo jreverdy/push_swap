@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   sort_small_stack.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jereverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 18:50:56 by jereverd          #+#    #+#             */
-/*   Updated: 2022/03/02 18:50:59 by jereverd         ###   ########lyon.fr   */
+/*   Created: 2022/04/26 10:48:41 by jereverd          #+#    #+#             */
+/*   Updated: 2022/04/26 10:48:42 by jereverd         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
 
-void	ft_bubble_sort(int *tab, int size)
+int is_sorted(t_stack *stack)
 {
-	int tmp;
-	int i;
-
-	i = 0;
-	while (i < size - 1)
+	while (stack->first > stack->first->next)
 	{
-		if (tab[i] > tab[i + 1])
-		{
-			tmp = tab[i];
-			tab[i] = tab[i + 1];
-			tab[i + 1] = tmp;
-		}
-		else
-			i++;
+		if (stack->first > stack->first->next)
+			return (FALSE);
+		stack->first = stack->first->next;
 	}
+	return (TRUE);
 }
 
-int	is_sorted(t_stack *a)
+void	sort_three(t_stack *stack)
 {
-	if (a->first < a->first->next)
-		return (1);
-	return (0);
-}
-
-void	find_biggest_number(t_stack *a)
-{
-
+	while (stack && is_sorted(&stack) == FALSE)
+	{
+		if (stack->first > stack->first->next)
+			swap(&stack, "sa");
+		else if (stack->first > stack->first->next->next)
+			reverse_rotate(&stack, "rra");
+	}
 }
